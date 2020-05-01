@@ -119,18 +119,19 @@ public class TechJobs {
 
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
-        for ( int i = 0; i < someJobs.size(); i++) {
-            System.out.println("***********************");
-//            for(Map.Entry<String, String> job : someJobs.entrySet()) {
-//                System.out.println((someJobs.getKey() + someJobs.getValue());
+        if (someJobs.size() < 1){
+            System.out.println("Sorry there are currently no jobs associated with that search term");
+        } else {
+            for (int i = 0; i < someJobs.size(); i++) {
+                System.out.println("***********************");
 
-            System.out.println("Name: " + someJobs.get(i).get("name"));
-            System.out.println("Employer: " + someJobs.get(i).get("employer"));
-            System.out.println("Location: " + someJobs.get(i).get("location"));
-            System.out.println("Position Type: " + someJobs.get(i).get("position type"));
-            System.out.println("Core Competency: " + someJobs.get(i).get("core competency"));
+                System.out.println("Name: " + someJobs.get(i).get("name"));
+                System.out.println("Employer: " + someJobs.get(i).get("employer"));
+                System.out.println("Location: " + someJobs.get(i).get("location"));
+                System.out.println("Position Type: " + someJobs.get(i).get("position type"));
+                System.out.println("Core Competency: " + someJobs.get(i).get("core competency"));
             }
-
+        }
     }
 }
 
