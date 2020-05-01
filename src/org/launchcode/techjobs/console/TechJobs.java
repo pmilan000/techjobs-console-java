@@ -2,16 +2,17 @@ package org.launchcode.techjobs.console;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 /**
- * Created by LaunchCode
+ * Created by LaunchCode0
  */
 public class TechJobs {
 
     private static Scanner in = new Scanner(System.in);
 
-    public static void main (String[] args) {
+    public static void main(String[] args) {
 
         // Initialize our field map with key/name pairs
         HashMap<String, String> columnChoices = new HashMap<>();
@@ -61,7 +62,15 @@ public class TechJobs {
                 String searchTerm = in.nextLine();
 
                 if (searchField.equals("all")) {
-                    System.out.println("Search all fields not yet implemented.");
+                    printJobs(JobData.findByValue(searchTerm));
+                } else if (searchField.equals("position type")){
+                    printJobs(JobData.findByValue(searchTerm));
+                } else if (searchField.equals("employer")){
+                    printJobs(JobData.findByValue(searchTerm));
+                } else if (searchField.equals("location")){
+                    printJobs(JobData.findByValue(searchTerm));
+                } else if (searchField.equals("core competency")){
+                    printJobs(JobData.findByValue(searchTerm));
                 } else {
                     printJobs(JobData.findByColumnAndValue(searchField, searchTerm));
                 }
@@ -103,14 +112,25 @@ public class TechJobs {
                 validChoice = true;
             }
 
-        } while(!validChoice);
+        } while (!validChoice);
 
         return choiceKeys[choiceIdx];
     }
 
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
+        for ( int i = 0; i < someJobs.size(); i++) {
+            System.out.println("***********************");
+//            for(Map.Entry<String, String> job : someJobs.entrySet()) {
+//                System.out.println((someJobs.getKey() + someJobs.getValue());
 
-        System.out.println("printJobs is not implemented yet");
+            System.out.println("Name: " + someJobs.get(i).get("name"));
+            System.out.println("Employer: " + someJobs.get(i).get("employer"));
+            System.out.println("Location: " + someJobs.get(i).get("location"));
+            System.out.println("Position Type: " + someJobs.get(i).get("position type"));
+            System.out.println("Core Competency: " + someJobs.get(i).get("core competency"));
+            }
+
     }
 }
+
